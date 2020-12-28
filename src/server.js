@@ -1,12 +1,19 @@
-import express from "express";
-import cors from "cors";
-import MasterRouter from "./routes";
+import cors from 'cors';
+import express from 'express';
+import path from 'path';
+import { connectDB } from './db';
+import MasterRouter from './routes';
+
+require('dotenv').config();
+connectDB();
 
 const app = express();
-const port = 3000;
+const port = 8000;
 
 app.use(cors());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 MasterRouter(app);
 
