@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import path from 'path';
 import { connectDB } from './db';
+import Result from './helpers/result.helper';
 import MasterRouter from './routes';
 
 require('dotenv').config();
@@ -16,7 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 MasterRouter(app);
-
+app.use(function (err, req, res, next) {
+  return Result.error(res, { message: err }, 500);
+});
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
