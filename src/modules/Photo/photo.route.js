@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import checkToken from '../../middlewares/token.middleware';
 import photoController from './photo.controller';
-const PhotoRouter = Router();
 
+const PhotoRouter = Router();
 PhotoRouter.route('/').get(photoController.getAll).post(checkToken, photoController.createPhoto);
 PhotoRouter.route('/:photoId')
   .get(photoController.getById)

@@ -17,9 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 MasterRouter(app);
+
 app.use(function (err, req, res, next) {
   return Result.error(res, { message: err }, 500);
 });
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
