@@ -8,7 +8,7 @@ import UserRouter from '../modules/User/user.route';
 const MasterRouter = (app) => {
   app.use('/api/auth', AuthRouter);
   app.use('/api/photos', PhotoRouter);
-  app.use('/api/comments', checkToken, CommentRouter);
+  app.use('/api/comments', CommentRouter);
   app.use('/api/users', checkToken, UserRouter);
   app.use('/api/upload', checkToken, UploadRouter);
 };
