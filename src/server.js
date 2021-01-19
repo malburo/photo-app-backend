@@ -4,6 +4,7 @@ import path from 'path';
 import { connectDB } from './db';
 import Result from './helpers/result.helper';
 import MasterRouter from './routes';
+import morgan from 'morgan';
 
 require('dotenv').config();
 connectDB();
@@ -11,6 +12,7 @@ connectDB();
 const app = express();
 const port = 8000;
 
+app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());

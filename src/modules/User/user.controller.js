@@ -1,14 +1,18 @@
 import Result from '../../helpers/result.helper';
 import User from '../User/user.model';
+import Photo from '../Photo/photo.model';
 import bcrypt from 'bcrypt';
 
-const getMe = async (req, res, next) => {
+const getUser = async (req, res, next) => {
   try {
-    Result.success(res, { currentUser: req.user }, 201);
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    Result.success(res, { user }, 201);
   } catch (error) {
     return next(error);
   }
 };
+
 const updateInfo = async (req, res, next) => {
   try {
     const { fullname, email, bio } = req.body;
@@ -55,5 +59,29 @@ const updateAvatar = async (req, res, next) => {
     return next(error);
   }
 };
-const userController = { getMe, updateInfo, updatePassword, updateAvatar };
+
+const deleteUser = async (req, res, next) => {
+  try {
+    Result.success(res, { user }, 201);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getPhotoOfUser = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const photos = await Photo.find({ userId })
+      .populate({
+        path: 'userId',
+        select: '_id profilePictureUrl fullname',
+      })
+      .sort({ _id: -1 });
+    return Result.success(res, { photos });
+  } catch (error) {
+    return Result.error(res, { message: 'Not Found' }, 404);
+  }
+};
+
+const userController = { getUser, updateInfo, updatePassword, updateAvatar, getPhotoOfUser, deleteUser };
 export default userController;

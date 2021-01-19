@@ -3,6 +3,14 @@ import Result from '../../helpers/result.helper';
 import { createAccessToken } from '../../helpers/token.helper';
 import User from '../User/user.model';
 
+const getMe = async (req, res, next) => {
+  try {
+    Result.success(res, { currentUser: req.user }, 201);
+  } catch (error) {
+    return next(error);
+  }
+};
+
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -53,5 +61,5 @@ const register = async (req, res, next) => {
   }
 };
 
-const authController = { login, register };
+const authController = { login, register, getMe };
 export default authController;

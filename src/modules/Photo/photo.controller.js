@@ -14,19 +14,6 @@ const getAll = async (req, res, next) => {
     next(error);
   }
 };
-const getAllOfCurrentUser = async (req, res, next) => {
-  try {
-    const photos = await Photo.find({ userId: req.user.id })
-      .populate({
-        path: 'userId',
-        select: '_id profilePictureUrl fullname',
-      })
-      .sort({ _id: -1 });
-    return Result.success(res, { photos });
-  } catch (error) {
-    next(error);
-  }
-};
 
 const getById = async (req, res, next) => {
   try {
@@ -82,5 +69,5 @@ const deletePhoto = async (req, res, next) => {
     next(error);
   }
 };
-const photoController = { getAll, getById, createPhoto, getAllOfCurrentUser, updatePhoto, deletePhoto };
+const photoController = { getAll, getById, createPhoto, updatePhoto, deletePhoto };
 export default photoController;
