@@ -1,7 +1,7 @@
-import Result from '../../helpers/result.helper';
 import User from '../User/user.model';
 import Photo from '../Photo/photo.model';
 import bcrypt from 'bcrypt';
+import Result from 'helpers/result.helper';
 
 const getUser = async (req, res, next) => {
   try {

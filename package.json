@@ -12,20 +12,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
     "babel-plugin-module-resolver": "^4.1.0",
-    "bcrypt": "^5.0.0",
-    "cloudinary": "^1.23.0",
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.27.0",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.8",
+    "mongoose": "^6.0.8",
     "morgan": "^1.10.0",
-    "multer": "^1.4.2",
-    "nodemon": "^2.0.6"
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.13"
   }
 }

@@ -6,6 +6,7 @@ import Result from './helpers/result.helper.js';
 import MasterRouter from './routes/index.js';
 import morgan from 'morgan';
 import cloudinary from './config/cloudinary.config.js';
+
 require('dotenv').config();
 connectDB();
 cloudinary.config();

@@ -1,9 +1,9 @@
-import checkToken from '../middlewares/token.middleware';
-import AuthRouter from '../modules/Auth/auth.route';
-import CommentRouter from '../modules/Comment/comment.route';
-import PhotoRouter from '../modules/Photo/photo.route';
-import UploadRouter from '../modules/Upload/upload.route';
-import UserRouter from '../modules/User/user.route';
+import checkToken from 'middlewares/token.middleware';
+import AuthRouter from 'modules/Auth/auth.route';
+import CommentRouter from 'modules/Comment/comment.route';
+import PhotoRouter from 'modules/Photo/photo.route';
+import UploadRouter from 'modules/Upload/upload.route';
+import UserRouter from 'modules/User/user.route';
 
 const MasterRouter = (app) => {
   app.use('/api/auth', AuthRouter);

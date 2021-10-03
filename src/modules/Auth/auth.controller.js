@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import Result from '../../helpers/result.helper';
-import { createAccessToken } from '../../helpers/token.helper';
+import Result from 'helpers/result.helper';
+import { createAccessToken } from 'helpers/token.helper';
 import User from '../User/user.model';
 
 const getMe = async (req, res, next) => {

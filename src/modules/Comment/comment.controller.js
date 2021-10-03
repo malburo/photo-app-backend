@@ -1,4 +1,4 @@
-import Result from '../../helpers/result.helper';
+import Result from 'helpers/result.helper';
 import Comment from '../Comment/comment.model';
 
 const getByPhotoId = async (req, res, next) => {

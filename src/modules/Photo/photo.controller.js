@@ -1,4 +1,4 @@
-import Result from '../../helpers/result.helper';
+import Result from 'helpers/result.helper';
 import Photo from '../Photo/photo.model';
 
 const getAll = async (req, res, next) => {

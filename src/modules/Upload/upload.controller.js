@@ -1,5 +1,5 @@
-import Result from '../../helpers/result.helper';
-import cloudinary from '../../config/cloudinary.config';
+import Result from 'helpers/result.helper';
+import cloudinary from 'config/cloudinary.config';
 const fs = require('fs');
 
 const upload = async (req, res, next) => {

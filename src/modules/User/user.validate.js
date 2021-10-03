@@ -1,4 +1,4 @@
-import Result from '../../helpers/result.helper';
+import Result from 'helpers/result.helper';
 
 function checkEmail(email) {
   const filter = /(\W|^)[\w.+\-]*@gmail\.com(\W|$)/;

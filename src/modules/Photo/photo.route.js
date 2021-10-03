@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import checkToken from '../../middlewares/token.middleware';
+import checkToken from 'middlewares/token.middleware';
 import photoController from './photo.controller';
 
 const PhotoRouter = Router();
