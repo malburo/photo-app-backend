@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import path from 'path';
 import { connectDB } from './db/index.js';
-import Result from './helpers/result.helper';
+import Result from './helpers/result.helper.js';
 import MasterRouter from './routes';
 import morgan from 'morgan';
 import cloudinary from './config/cloudinary.config';
