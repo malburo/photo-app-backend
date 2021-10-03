@@ -1,9 +1,12 @@
 import Result from '../../helpers/result.helper';
+import cloudinary from '../../config/cloudinary.config';
+const fs = require('fs');
 
 const upload = async (req, res, next) => {
   try {
-    const path = `http://localhost:8000/${req.file.path.split('/').splice(2).join('/')}`;
-    Result.success(res, { path }, 201);
+    const uploader = await cloudinary.uploads(req.file.path, 'PhotoApp/image');
+    fs.unlinkSync(req.file.path);
+    Result.success(res, { uploader }, 201);
   } catch (error) {
     next(error);
   }

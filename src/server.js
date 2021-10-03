@@ -5,9 +5,10 @@ import { connectDB } from './db';
 import Result from './helpers/result.helper';
 import MasterRouter from './routes';
 import morgan from 'morgan';
-
+import cloudinary from './config/cloudinary.config';
 require('dotenv').config();
 connectDB();
+cloudinary.config();
 
 const app = express();
 const port = 8000;
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 MasterRouter(app);
 
 app.use(function (err, req, res, next) {
-  return Result.error(res, { message: err }, 500);
+  return Result.error(res, { message: err.message }, 500);
 });
 
 app.listen(port, () => {
