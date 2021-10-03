@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import path from 'path';
-import { connectDB } from './db';
+import { connectDB } from './db/index.js';
 import Result from './helpers/result.helper';
 import MasterRouter from './routes';
 import morgan from 'morgan';
