@@ -3,17 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "babel-node src/server.js",
-    "dev": "nodemon --exec babel-node src/server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.5",
-    "@babel/node": "^7.15.4",
-    "@babel/preset-env": "^7.15.6",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.27.0",
@@ -25,5 +20,10 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.3",
     "nodemon": "^2.0.13"
+  },
+  "scripts": {
+    "start": "babel-node src/server",
+    "dev": "nodemon --exec babel-node src/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
