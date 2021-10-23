@@ -36,18 +36,23 @@ function UpdateInfoValidate(req, res, next) {
 function ChangePasswordValidate(req, res, next) {
   try {
     const { currentPassword, newPassword, retypePassword } = req.body;
-
-    if (currentPassword === '' || newPassword === '' || retypePassword === '') {
-      return Result.error(res, { message: 'Không được để trống!' });
+    if (currentPassword === '') {
+      return Result.error(res, { message: 'Please enter current password' });
     }
-    if (currentPassword.length < 6 || currentPassword.length > 30) {
-      return Result.error(res, { message: 'Password phải có độ dài từ 6-30 ký tự!' });
+    if (newPassword === '') {
+      return Result.error(res, { message: 'Please enter new password' });
     }
-    if (newPassword.length < 6 || newPassword.length > 30) {
-      return Result.error(res, { message: 'Password mới phải có độ dài từ 6-30 ký tự!' });
+    if (retypePassword === '') {
+      return Result.error(res, { message: 'Please retype your password' });
+    }
+    if (currentPassword.length < 6 || currentPassword.length > 35) {
+      return Result.error(res, { message: 'Password must be a string between 6-35 characters' });
+    }
+    if (newPassword.length < 6 || newPassword.length > 35) {
+      return Result.error(res, { message: 'Password must be a string between 6-35 characters' });
     }
     if (retypePassword !== newPassword) {
-      return Result.error(res, { message: 'Xác nhận mật khẩu không đúng với mật khẩu!' });
+      return Result.error(res, { message: 'Password does not match' });
     }
     next();
   } catch (error) {
