@@ -11,18 +11,31 @@ function checkEmail(email) {
 function validateFormRegister(req, res, next) {
   try {
     const { fullname, email, password, retypePassword } = req.body;
-    if (fullname === '' || email === '' || password === '' || retypePassword === '')
-      return Result.error(res, { message: 'Không được để trống!' });
-
-    if (fullname.length < 2 || fullname.length > 30) {
-      return Result.error(res, { message: 'Họ tên phải có độ dài từ 2-30 ký tự!' });
+    if (fullname === '') {
+      return Result.error(res, { message: 'Please enter your fullname' });
     }
+    if (email === '') {
+      return Result.error(res, { message: 'Please enter your email' });
+    }
+    if (password === '') {
+      return Result.error(res, { message: 'Please enter your password' });
+    }
+    if (retypePassword === '') {
+      return Result.error(res, { message: 'Please retype your password' });
+    }
+    if (fullname.length < 2 || fullname.length > 35) {
+      return Result.error(res, { message: 'Fullname must be a string between 2-35 characters' });
+    }
+    if (email.length < 6 || email.length > 35) {
+      return Result.error(res, { message: 'Email must be a string between 6-35 characters' });
+    }
+    if (password.length < 6 || password.length > 35) {
+      return Result.error(res, { message: 'Password must be a string between 6-35 characters' });
+    }
+    if (password !== retypePassword) return Result.error(res, { message: 'Password does not match' });
 
-    if (password !== retypePassword)
-      return Result.error(res, { message: 'Xác nhận mật khẩu không đúng với mật khẩu!' });
+    if (checkEmail(email) === false) return Result.error(res, { message: 'Please enter a valid email address' });
 
-    if (checkEmail(email) === false)
-      return Result.error(res, { message: 'Vui lòng nhập email đúng định dạng: abc@gmail.com' });
     next();
   } catch (error) {
     console.log(error);
@@ -33,15 +46,19 @@ function validateFormRegister(req, res, next) {
 function validateFormLogin(req, res, next) {
   try {
     const { email, password } = req.body;
-    if (email === '' || password === '') {
-      return Result.error(res, { message: 'Vui lòng nhập đầy đủ tài khoản, mật khẩu và không được để trống!' });
+    if (email === '') {
+      return Result.error(res, { message: 'Please enter your email' });
+    }
+    if (password === '') {
+      return Result.error(res, { message: 'Please enter your password' });
     }
     if (email.length < 6 || email.length > 35) {
-      return Result.error(res, { message: 'Email phải từ 6-35 ký tự!' });
+      return Result.error(res, { message: 'Email must be a string between 6-35 characters' });
     }
-    if (password.length < 6 || password.length > 30) {
-      return Result.error(res, { message: 'Mật khẩu phải là chuỗi có độ dài từ 6-30 ký tự!' });
+    if (password.length < 6 || password.length > 35) {
+      return Result.error(res, { message: 'Password must be a string between 6-35 characters' });
     }
+    if (checkEmail(email) === false) return Result.error(res, { message: 'Please enter a valid email address' });
     next();
   } catch (error) {
     next(error);

@@ -31,6 +31,15 @@ const getById = async (req, res, next) => {
 const createPhoto = async (req, res, next) => {
   try {
     const { photoLabel, photoUrl } = req.body;
+    if (!photoUrl) {
+      return Result.error(res, { message: 'File is empty' }, 401);
+    }
+    if (!photoLabel) {
+      return Result.error(res, { message: 'Please enter photo label' }, 401);
+    }
+    if (photoLabel.length > 30) {
+      return Result.error(res, { message: 'Please enter at most 30 characters' }, 401);
+    }
     const newPhoto = await Photo.create({
       photoLabel,
       photoUrl,
