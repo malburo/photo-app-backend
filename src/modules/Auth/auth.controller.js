@@ -17,7 +17,7 @@ const login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return Result.error(res, { message: 'email does not exist' }, 401);
+      return Result.error(res, { message: 'Email does not exist' }, 401);
     }
     const comparePassword = await bcrypt.compare(password, user.password);
     if (!comparePassword) {
@@ -40,7 +40,7 @@ const register = async (req, res, next) => {
     const { fullname, email, password } = req.body;
     const checkEmail = await User.find({ email }).countDocuments();
     if (checkEmail) {
-      return Result.error(res, { message: 'Email này đã được sử dụng' });
+      return Result.error(res, { message: 'This email has been used' });
     }
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
